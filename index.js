@@ -30,7 +30,8 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 
 app.get('/google3569d39a166833c9.html', function(req, res) {
-	res.sendfile('google3569d39a166833c9.html');
+	res.send('hola');
+	//res.sendfile('google3569d39a166833c9.html');
 });
 
 const PORT = process.env.PORT || 5000;
