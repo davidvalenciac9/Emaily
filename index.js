@@ -29,7 +29,7 @@ app.use(passport.session());
 	call the function and the parameter directly from the require*/
 require('./routes/authRoutes')(app);
 
-app.get('/google3569d39a166833c9.html', function(req, res) {
+app.get('/google3569d39a166833c9', function(req, res) {
 	res.send('hola');
 	//res.sendfile('google3569d39a166833c9.html');
 });
