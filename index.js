@@ -29,8 +29,8 @@ app.use(passport.session());
 	call the function and the parameter directly from the require*/
 require('./routes/authRoutes')(app);
 
-app.get('/google3569d39a166833c9', function(req, res) {
-	res.sendfile('/google3569d39a166833c9.html');
+app.get('/google3569d39a166833c9.html', function(req, res) {
+	res.sendfile(__dirname + '/google3569d39a166833c9.html');
 });
 
 const PORT = process.env.PORT || 5000;
