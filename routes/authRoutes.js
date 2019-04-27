@@ -9,7 +9,7 @@ module.exports = app => {
 			scope: ['profile', 'email']
 		})
 	);
-	//At this point passport gonna see the code that google callsback
+	//At this point passport gonna see the code that google callback
 	//In the address and use it
 	app.get('/auth/google/callback', passport.authenticate('google'));
 

@@ -29,7 +29,8 @@ passport.use(
 			clientSecret: keys.googleClientSecret,
 			//This callbackURL has to match the Authorized redirect URI
 			//In Google API credentials
-			callbackURL: '/auth/google/callback'
+			callbackURL: '/auth/google/callback',
+			proxy: true
 		},
 		/*This argument (arrow function) is the oportunity to
 		take user information*/
