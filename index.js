@@ -29,13 +29,6 @@ app.use(passport.session());
 	call the function and the parameter directly from the require*/
 require('./routes/authRoutes')(app);
 
-const path = require('path');
-app.get('/google3569d39a166833c9', (req, res) => {
-	res.sendFile('google3569d39a166833c9.html', {
-		root: path.join(__dirname, './')
-	});
-});
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
 	console.log('Server Runing');
