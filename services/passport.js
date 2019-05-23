@@ -34,29 +34,23 @@ passport.use(
 		},
 		/*This argument (arrow function) is the oportunity to
 		take user information*/
-		(accessToken, refreshToken, profile, done) => {
-			User.findOne({
+		async (accessToken, refreshToken, profile, done) => {
+			const existingUser = await User.findOne({
 				googleId: profile.id
-			})
-				/*User.findOne returns a promise were the argument of the .then
+			});
+			/*User.findOne returns a promise were the argument of the .then
 			will return the user. If not user found return null*/
-				.then(existingUser => {
-					if (existingUser) {
-						//Already have a record with that Profile ID
-						console.log('User Already exists');
-						done(null, existingUser);
-					} else {
-						//We don't have a record with that ID, make new MODEL INSTANCE!!!
-						new User({
-							googleId: profile.id
-						})
-							.save() /*.save() will add the user to the mongoDB*/
-							.then(user => {
-								/*This create a new MODEL INSTANCE for the same user and is the one we use*/
-								done(null, user);
-							});
-					}
-				});
+			if (existingUser) {
+				//Already have a record with that Profile ID
+				console.log('User Already exists');
+				return done(null, existingUser);
+			}
+			//We don't have a record with that ID, make new MODEL INSTANCE!!!
+			const user = await new User({
+				googleId: profile.id
+			}).save(); /*.save() will add the user to the mongoDB*/
+			/*This create a new MODEL INSTANCE for the same user and is the one we use*/
+			done(null, user);
 		}
 	)
 );

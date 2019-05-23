@@ -11,12 +11,18 @@ module.exports = app => {
 	);
 	//At this point passport gonna see the code that google callback
 	//In the address and use it
-	app.get('/auth/google/callback', passport.authenticate('google'));
+	app.get(
+		'/auth/google/callback',
+		passport.authenticate('google'),
+		(req, res) => {
+			res.redirect('/surveys');
+		}
+	);
 
 	app.get('/api/logout', (req, res) => {
 		/*logout() is a function attached by passport to the request*/
 		req.logout();
-		res.send(req.user);
+		res.redirect('/');
 	});
 
 	app.get('/api/current_user', (req, res) => {
